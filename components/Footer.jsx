@@ -19,7 +19,7 @@ const Footer = () => {
                       className="inline-block text-gray-500 hover:text-gray-600 font-bold"
                       href="#"
                     >
-                      Products
+                      About Me
                     </a>
                   </li>
                   <li className="inline-flex p-6">
@@ -27,7 +27,7 @@ const Footer = () => {
                       className="inline-block text-gray-500 hover:text-gray-600 font-bold"
                       href="#"
                     >
-                      About Us
+                      Projects
                     </a>
                   </li>
                   <li className="inline-flex p-6">
@@ -35,7 +35,7 @@ const Footer = () => {
                       className="inline-block text-gray-500 hover:text-gray-600 font-bold"
                       href="#"
                     >
-                      Careers
+                      Blog
                     </a>
                   </li>
                   <li className="inline-flex p-6">
@@ -43,15 +43,7 @@ const Footer = () => {
                       className="inline-block text-gray-500 hover:text-gray-600 font-bold"
                       href="#"
                     >
-                      Portfolio
-                    </a>
-                  </li>
-                  <li className="inline-flex p-6">
-                    <a
-                      className="inline-block text-gray-500 hover:text-gray-600 font-bold"
-                      href="#"
-                    >
-                      Contact Us
+                      Contact
                     </a>
                   </li>
                 </ul>
@@ -79,9 +71,9 @@ const Footer = () => {
           </div>
         </div>
         <p className="text-center font-bold">
-          <span>Ⓒ Copyright. All rights reserved by</span>
+          <span>Ⓒ Copyright. All rights reserved by </span>
           <a className="text-blue-500 hover:text-blue-600" href="#">
-            Zanrly
+            Alp Toker
           </a>
         </p>
       </div>

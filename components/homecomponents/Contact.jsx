@@ -8,14 +8,14 @@ const Contact = () => {
           <div className="max-w-7xl mx-auto">
             <div className="mb-10 md:max-w-md mx-auto text-center">
               <span className="inline-block mb-4 text-sm text-blue-500 font-bold uppercase tracking-widest">
-                Contact Us
+                Contact Me
               </span>
               <h2 className="font-heading mb-6 text-4xl md:text-5xl lg:text-6xl text-gray-900 font-black tracking-tight">
-                Get connected
+                Get in touch
               </h2>
               <p className="text-gray-500 font-bold">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Malesuada tellus vestibulum, commodo pulvinar.
+                I’d love to hear from you! You can reach me by email or phone.
+                I’ll get back to you as soon as I can.
               </p>
             </div>
             <div className="flex flex-wrap -m-4">
@@ -46,8 +46,7 @@ const Contact = () => {
                   <h3 className="font-heading mb-2 text-xl text-gray-900 font-black">
                     Send Email
                   </h3>
-                  <p className="text-gray-500 font-bold">info@zanrly.com</p>
-                  <p className="text-gray-500 font-bold">support@zanrly.com</p>
+                  <p className="text-gray-500 font-bold">tokeralp@gmail.com</p>
                 </div>
               </div>
               <div className="w-full md:w-1/3 p-4">
@@ -75,10 +74,9 @@ const Contact = () => {
                     </svg>
                   </div>
                   <h3 className="font-heading mb-2 text-xl text-gray-900 font-black">
-                    Call Us
+                    Call Me or Send a Message
                   </h3>
-                  <p className="text-gray-500 font-bold">+1 8424 199 941</p>
-                  <p className="text-gray-500 font-bold">+1 0221 234 554</p>
+                  <p className="text-gray-500 font-bold">+90 544 656 67 61</p>
                 </div>
               </div>
               <div className="w-full md:w-1/3 p-4">
@@ -108,10 +106,7 @@ const Contact = () => {
                   <h3 className="font-heading mb-2 text-xl text-gray-900 font-black">
                     Address
                   </h3>
-                  <p className="text-gray-500 font-bold">
-                    380 St Killda Road, Mellbourne
-                  </p>
-                  <p className="text-gray-500 font-bold">VIC 3004, Australia</p>
+                  <p className="text-gray-500 font-bold">Ankara, Türkiye</p>
                 </div>
               </div>
             </div>

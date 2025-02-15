@@ -102,18 +102,18 @@ const Hero = () => {
             <div className="w-full md:w-1/2 p-8">
               <div className="md:max-w-lg mx-auto">
                 <span className="inline-block mb-3 text-sm text-blue-500 font-bold uppercase tracking-widest">
-                  Best caption here
+                  Full Stack Developer
                 </span>
                 <h1 className="font-heading mb-4 text-5xl text-gray-900 font-black tracking-tight">
-                  <span>Build better products</span>
+                  <span>Alp </span>
                   <span className="text-transparent bg-clip-text bg-gradient-orange">
-                    faster
+                    Toker
                   </span>
-                  <span>than ever.</span>
                 </h1>
                 <p className="mb-6 text-xl font-bold">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  venenatis volutpat velit.
+                  Dedicated Full-Stack Developer with 4+ years of experience in
+                  frontend and backend development. Proven track record of
+                  delivering high-quality solutions and driving project success.
                 </p>
                 <div className="flex flex-wrap -m-2">
                   <div className="w-full md:w-auto p-2">
@@ -121,7 +121,7 @@ const Hero = () => {
                       className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full"
                       href="#"
                     >
-                      Get Started
+                      Projects
                     </a>
                   </div>
                   <div className="w-full md:w-auto p-2">
@@ -129,7 +129,7 @@ const Hero = () => {
                       className="block w-full px-4 py-2.5 text-sm text-center text-gray-900 font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:ring-gray-200 rounded-full"
                       href="#"
                     >
-                      Watch Video
+                      Get in touch
                     </a>
                   </div>
                 </div>
