@@ -2,150 +2,136 @@ import React from "react";
 
 const Projects = () => {
   return (
-    <section className="py-16 overflow-hidden bg-gray-50">
+    <section className="py-10 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="mb-16 max-w-xl mx-auto text-center">
-          <span className="inline-block mb-2 text-sm text-blue-500 font-bold uppercase tracking-widest">
-            Our team
-          </span>
-          <h2 className="font-heading text-4xl md:text-5xl text-gray-900 font-black tracking-tight">
-            The brain behind Zanrly
-          </h2>
-        </div>
-        <div className="flex flex-wrap -m-4">
-          <div className="w-full md:w-1/3 p-4">
-            <div className="flex flex-col justify-between px-8 pt-10 pb-12 h-full text-center bg-white rounded-3xl">
-              <div className="flex-initial mb-8">
-                <img
-                  className="mb-8 mx-auto rounded-3xl"
-                  src="assets/images/teams/avatar.png"
-                  alt
-                />
-                <h3 className="font-heading mb-2 text-2xl text-gray-900 font-black tracking-tight">
-                  John Doe
-                </h3>
-                <p className="text-sm text-gray-500 font-bold">
-                  Design, Founder
-                </p>
+        <div className="py-16 px-8 bg-white rounded-3xl">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-10 md:max-w-2xl mx-auto text-center">
+              <h2 className="font-heading mb-6 text-4xl md:text-5xl lg:text-6xl text-gray-900 font-black tracking-tight">
+                Featured Projects
+              </h2>
+              <p className="text-gray-500 font-bold">
+                Here are some of my notable projects that showcase my skills and
+                expertise
+              </p>
+            </div>
+            <div className="flex flex-wrap -m-4">
+              {/* Project 1 */}
+              <div className="w-full md:w-1/3 p-4">
+                <div className="h-full p-8 text-center hover:bg-gray-50 rounded-3xl transition duration-200">
+                  <div className="mb-6 relative h-52 w-full">
+                    <div className="absolute top-0 left-0 w-full h-full rounded-3xl border border-gray-100 overflow-hidden">
+                      <img
+                        className="w-full h-full object-cover"
+                        src="https://picsum.photos/800/600?random=1"
+                        alt="Project 1"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="font-heading mb-2 text-xl text-gray-900 font-black">
+                    xSPECTAR Gallery Project
+                  </h3>
+                  <p className="mb-4 text-gray-500 font-bold">
+                    React.js, SCSS, HTML - NFT Gallery Showcase
+                  </p>
+                  <div className="flex gap-4 justify-center">
+                    <a
+                      className="inline-block px-4 py-2 text-sm text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full"
+                      href="https://gregarious-genie-d9d4e8.netlify.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live Demo
+                    </a>
+                    <a
+                      className="inline-block px-4 py-2 text-sm text-gray-900 font-bold bg-gray-100 hover:bg-gray-200 rounded-full"
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Source Code
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="flex-initial">
-                <div className="flex flex-wrap justify-center -m-1.5">
-                  <div className="w-auto p-1.5">
+              {/* Project 2 */}
+              <div className="w-full md:w-1/3 p-4">
+                <div className="h-full p-8 text-center hover:bg-gray-50 rounded-3xl transition duration-200">
+                  <div className="mb-6 relative h-52 w-full">
+                    <div className="absolute top-0 left-0 w-full h-full rounded-3xl border border-gray-100 overflow-hidden">
+                      <img
+                        className="w-full h-full object-cover"
+                        src="https://picsum.photos/800/600?random=2"
+                        alt="Project 2"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="font-heading mb-2 text-xl text-gray-900 font-black">
+                    Wedding Website
+                  </h3>
+                  <p className="mb-4 text-gray-500 font-bold">
+                    React.js, CSS, HTML - Elegant Wedding Website
+                  </p>
+                  <div className="flex gap-4 justify-center">
                     <a
-                      className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full"
-                      href="#"
+                      className="inline-block px-4 py-2 text-sm text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full"
+                      href="https://main--marta-alessandro.netlify.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <img src="assets/images/insta.svg" alt />
+                      Live Demo
+                    </a>
+                    <a
+                      className="inline-block px-4 py-2 text-sm text-gray-900 font-bold bg-gray-100 hover:bg-gray-200 rounded-full"
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Source Code
                     </a>
                   </div>
-                  <div className="w-auto p-1.5">
-                    <a
-                      className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full"
-                      href="#"
-                    >
-                      <img src="assets/images/twitter.svg" alt />
-                    </a>
+                </div>
+              </div>
+              {/* Project 3 */}
+              <div className="w-full md:w-1/3 p-4">
+                <div className="h-full p-8 text-center hover:bg-gray-50 rounded-3xl transition duration-200">
+                  <div className="mb-6 relative h-52 w-full">
+                    <div className="absolute top-0 left-0 w-full h-full rounded-3xl border border-gray-100 overflow-hidden">
+                      <img
+                        className="w-full h-full object-cover"
+                        src="https://picsum.photos/800/600?random=3"
+                        alt="Project 3"
+                      />
+                    </div>
                   </div>
-                  <div className="w-auto p-1.5">
+                  <h3 className="font-heading mb-2 text-xl text-gray-900 font-black">
+                    The Batmobile Game
+                  </h3>
+                  <p className="mb-4 text-gray-500 font-bold">
+                    C#, Windows Forms - Interactive Game Development
+                  </p>
+                  <div className="flex gap-4 justify-center">
                     <a
-                      className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full"
-                      href="#"
+                      className="inline-block px-4 py-2 text-sm text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full"
+                      href="https://github.com/Rau7/TheBatmobileGame"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <img src="assets/images/fb.svg" alt />
+                      Source Code
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="w-full md:w-1/3 p-4">
-            <div className="flex flex-col justify-between px-8 pt-10 pb-12 h-full text-center bg-white rounded-3xl">
-              <div className="flex-initial mb-8">
-                <img
-                  className="mb-8 mx-auto rounded-3xl"
-                  src="assets/images/teams/avatar.png"
-                  alt
-                />
-                <h3 className="font-heading mb-2 text-2xl text-gray-900 font-black tracking-tight">
-                  John Doe
-                </h3>
-                <p className="text-sm text-gray-500 font-bold">
-                  Design, Founder
-                </p>
-              </div>
-              <div className="flex-initial">
-                <div className="flex flex-wrap justify-center -m-1.5">
-                  <div className="w-auto p-1.5">
-                    <a
-                      className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full"
-                      href="#"
-                    >
-                      <img src="assets/images/insta.svg" alt />
-                    </a>
-                  </div>
-                  <div className="w-auto p-1.5">
-                    <a
-                      className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full"
-                      href="#"
-                    >
-                      <img src="assets/images/twitter.svg" alt />
-                    </a>
-                  </div>
-                  <div className="w-auto p-1.5">
-                    <a
-                      className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full"
-                      href="#"
-                    >
-                      <img src="assets/images/fb.svg" alt />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full md:w-1/3 p-4">
-            <div className="flex flex-col justify-between px-8 pt-10 pb-12 h-full text-center bg-white rounded-3xl">
-              <div className="flex-initial mb-8">
-                <img
-                  className="mb-8 mx-auto rounded-3xl"
-                  src="assets/images/teams/avatar.png"
-                  alt
-                />
-                <h3 className="font-heading mb-2 text-2xl text-gray-900 font-black tracking-tight">
-                  John Doe
-                </h3>
-                <p className="text-sm text-gray-500 font-bold">
-                  Design, Founder
-                </p>
-              </div>
-              <div className="flex-initial">
-                <div className="flex flex-wrap justify-center -m-1.5">
-                  <div className="w-auto p-1.5">
-                    <a
-                      className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full"
-                      href="#"
-                    >
-                      <img src="assets/images/insta.svg" alt />
-                    </a>
-                  </div>
-                  <div className="w-auto p-1.5">
-                    <a
-                      className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full"
-                      href="#"
-                    >
-                      <img src="assets/images/twitter.svg" alt />
-                    </a>
-                  </div>
-                  <div className="w-auto p-1.5">
-                    <a
-                      className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full"
-                      href="#"
-                    >
-                      <img src="assets/images/fb.svg" alt />
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <div className="flex justify-center mt-12">
+              <a
+                href="https://github.com/Rau7?tab=repositories"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 text-sm text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full transition duration-200"
+              >
+                View More Projects
+              </a>
             </div>
           </div>
         </div>
