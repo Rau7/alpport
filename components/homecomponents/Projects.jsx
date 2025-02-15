@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Projects = () => {
   return (
@@ -35,17 +36,15 @@ const Projects = () => {
                     React.js, SCSS, HTML - NFT Gallery Showcase
                   </p>
                   <div className="flex gap-4 justify-center">
-                    <a
+                    <Link
                       className="inline-block px-4 py-2 text-sm text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full"
-                      href="https://gregarious-genie-d9d4e8.netlify.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="/projects/xspectar-gallery"
                     >
-                      Live Demo
-                    </a>
+                      View Details
+                    </Link>
                     <a
                       className="inline-block px-4 py-2 text-sm text-gray-900 font-bold bg-gray-100 hover:bg-gray-200 rounded-full"
-                      href="#"
+                      href="https://github.com/Rau7/xspectar-gallery"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -73,17 +72,15 @@ const Projects = () => {
                     React.js, CSS, HTML - Elegant Wedding Website
                   </p>
                   <div className="flex gap-4 justify-center">
-                    <a
+                    <Link
                       className="inline-block px-4 py-2 text-sm text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full"
-                      href="https://main--marta-alessandro.netlify.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="/projects/wedding-website"
                     >
-                      Live Demo
-                    </a>
+                      View Details
+                    </Link>
                     <a
                       className="inline-block px-4 py-2 text-sm text-gray-900 font-bold bg-gray-100 hover:bg-gray-200 rounded-full"
-                      href="#"
+                      href="https://github.com/Rau7/wedding-website"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -111,8 +108,14 @@ const Projects = () => {
                     C#, Windows Forms - Interactive Game Development
                   </p>
                   <div className="flex gap-4 justify-center">
-                    <a
+                    <Link
                       className="inline-block px-4 py-2 text-sm text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full"
+                      href="/projects/batmobile-game"
+                    >
+                      View Details
+                    </Link>
+                    <a
+                      className="inline-block px-4 py-2 text-sm text-gray-900 font-bold bg-gray-100 hover:bg-gray-200 rounded-full"
                       href="https://github.com/Rau7/TheBatmobileGame"
                       target="_blank"
                       rel="noopener noreferrer"

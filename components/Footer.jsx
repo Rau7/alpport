@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 const Footer = () => {
   const scrollToSection = (sectionId) => {
@@ -18,7 +19,12 @@ const Footer = () => {
             <div className="flex flex-wrap items-center justify-between -m-4">
               <div className="w-auto p-4">
                 <a className="inline-block" href="#">
-                  <img src="assets/logos/zanrly-logo.svg" alt />
+                  <Image
+                    src="/assets/logos/zanrly-logo.svg"
+                    alt="Logo"
+                    width={120}
+                    height={40}
+                  />
                 </a>
               </div>
               <div className="w-auto p-4">
@@ -69,17 +75,32 @@ const Footer = () => {
                 <div className="flex flex-wrap -m-4">
                   <div className="w-auto p-4">
                     <a className="block" href="#">
-                      <img src="assets/images/insta.svg" alt />
+                      <Image
+                        src="/assets/images/insta.svg"
+                        alt="Instagram"
+                        width={24}
+                        height={24}
+                      />
                     </a>
                   </div>
                   <div className="w-auto p-4">
                     <a className="block" href="#">
-                      <img src="assets/images/twitter.svg" alt />
+                      <Image
+                        src="/assets/images/twitter.svg"
+                        alt="Twitter"
+                        width={24}
+                        height={24}
+                      />
                     </a>
                   </div>
                   <div className="w-auto p-4">
                     <a className="block" href="#">
-                      <img src="assets/images/footers/fb.svg" alt />
+                      <Image
+                        src="/assets/images/fb.svg"
+                        alt="Facebook"
+                        width={24}
+                        height={24}
+                      />
                     </a>
                   </div>
                 </div>
