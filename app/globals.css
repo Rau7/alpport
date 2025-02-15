@@ -1,21 +1,19 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+input[type="checkbox"]:checked + div {
+  @apply bg-blue-500;
+  @apply border-0;
+  @apply text-white;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+input[type="checkbox"]:checked + div svg {
+  @apply block;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+input[type="checkbox"]:disabled + div {
+  @apply border-gray-200;
 }
