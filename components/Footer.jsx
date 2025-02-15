@@ -1,6 +1,15 @@
+"use client";
+
 import React from "react";
 
 const Footer = () => {
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="py-10 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4">
@@ -15,36 +24,44 @@ const Footer = () => {
               <div className="w-auto p-4">
                 <ul className="-m-6">
                   <li className="inline-flex p-6">
-                    <a
+                    <button
+                      onClick={() => scrollToSection("about")}
                       className="inline-block text-gray-500 hover:text-gray-600 font-bold"
-                      href="#"
                     >
                       About Me
-                    </a>
+                    </button>
                   </li>
                   <li className="inline-flex p-6">
-                    <a
+                    <button
+                      onClick={() => scrollToSection("projects")}
                       className="inline-block text-gray-500 hover:text-gray-600 font-bold"
-                      href="#"
                     >
                       Projects
-                    </a>
+                    </button>
                   </li>
                   <li className="inline-flex p-6">
-                    <a
+                    <button
+                      onClick={() => scrollToSection("technologies")}
                       className="inline-block text-gray-500 hover:text-gray-600 font-bold"
-                      href="#"
+                    >
+                      Technologies
+                    </button>
+                  </li>
+                  <li className="inline-flex p-6">
+                    <button
+                      onClick={() => scrollToSection("blog")}
+                      className="inline-block text-gray-500 hover:text-gray-600 font-bold"
                     >
                       Blog
-                    </a>
+                    </button>
                   </li>
                   <li className="inline-flex p-6">
-                    <a
+                    <button
+                      onClick={() => scrollToSection("contact")}
                       className="inline-block text-gray-500 hover:text-gray-600 font-bold"
-                      href="#"
                     >
                       Contact
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </div>
