@@ -2,87 +2,117 @@
 
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { usePathname } from "next/navigation";
 
 const Blog = () => {
+  const pathname = usePathname();
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const subtitleRef = useRef(null);
   const descriptionRef = useRef(null);
   const blogCardsRef = useRef(null);
+  const animationRefs = useRef([]);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Heading animations
-    gsap.from(subtitleRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        toggleActions: "play none none reverse"
-      },
-      y: 20,
+    // Reset animation state when pathname changes
+    hasAnimated.current = false;
+    
+    // Kill any existing animations
+    animationRefs.current.forEach(anim => anim?.kill());
+    
+    // Reset elements to their initial state
+    const elements = [
+      subtitleRef.current,
+      headingRef.current,
+      descriptionRef.current,
+      ...(blogCardsRef.current?.children || [])
+    ];
+    
+    gsap.set(elements, {
+      clearProps: "all",
       opacity: 0,
-      duration: 0.6
+      y: 50
     });
 
-    gsap.from(headingRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        toggleActions: "play none none reverse"
-      },
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      delay: 0.2
-    });
+    const animate = () => {
+      if (hasAnimated.current) return;
+      
+      const tl = gsap.timeline();
+      
+      tl.from(subtitleRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        ease: "power3.out"
+      })
+      .from(headingRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        ease: "power3.out"
+      }, "-=0.4")
+      .from(descriptionRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        ease: "power3.out"
+      }, "-=0.4")
+      .from(blogCardsRef.current.children, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out"
+      }, "-=0.4");
 
-    gsap.from(descriptionRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        toggleActions: "play none none reverse"
-      },
-      y: 20,
-      opacity: 0,
-      duration: 0.6,
-      delay: 0.4
-    });
+      hasAnimated.current = true;
+      animationRefs.current.push(tl);
+    };
 
-    // Blog cards animation with stagger
-    gsap.from(blogCardsRef.current.children, {
-      scrollTrigger: {
-        trigger: blogCardsRef.current,
-        start: "top 85%",
-        toggleActions: "play none none reverse"
-      },
-      y: 60,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power2.out"
-    });
+    // Blog cards hover animations
+    const hoverAnimations = [];
+    const cards = blogCardsRef.current.children;
 
-    // Add hover effect to blog cards
-    blogCardsRef.current.childNodes.forEach(card => {
-      card.addEventListener("mouseenter", () => {
-        gsap.to(card, {
-          y: -10,
-          duration: 0.3,
-          ease: "power2.out"
-        });
+    Array.from(cards).forEach(card => {
+      const enterAnimation = gsap.to(card, {
+        y: -10,
+        duration: 0.3,
+        paused: true,
+        ease: "power2.out"
       });
 
-      card.addEventListener("mouseleave", () => {
-        gsap.to(card, {
-          y: 0,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      });
+      card.addEventListener("mouseenter", () => enterAnimation.play());
+      card.addEventListener("mouseleave", () => enterAnimation.reverse());
+      
+      hoverAnimations.push(enterAnimation);
     });
-  }, []);
+
+    animationRefs.current = [...animationRefs.current, ...hoverAnimations];
+
+    // Create intersection observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animate();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(sectionRef.current);
+
+    // Cleanup function
+    return () => {
+      observer.disconnect();
+      animationRefs.current.forEach(anim => anim?.kill());
+      gsap.set(elements, {
+        clearProps: "all"
+      });
+    };
+  }, [pathname]);
 
   return (
     <section ref={sectionRef} id="blog" className="py-10 bg-gray-100 overflow-hidden">

@@ -3,19 +3,38 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { usePathname } from "next/navigation";
 
 const Contact = () => {
+  const pathname = usePathname();
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const subtitleRef = useRef(null);
   const descriptionRef = useRef(null);
   const cardsRef = useRef(null);
+  const animationRefs = useRef([]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Kill any existing animations
+    animationRefs.current.forEach(anim => anim?.kill());
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+    // Reset elements to their initial state
+    gsap.set([
+      subtitleRef.current,
+      headingRef.current,
+      descriptionRef.current,
+      cardsRef.current?.children
+    ], {
+      clearProps: "all",
+      opacity: 0,
+      y: 0
+    });
+
     // Heading animation
-    gsap.from(subtitleRef.current, {
+    const subtitleTl = gsap.from(subtitleRef.current, {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 80%",
@@ -26,7 +45,7 @@ const Contact = () => {
       duration: 0.6
     });
 
-    gsap.from(headingRef.current, {
+    const headingTl = gsap.from(headingRef.current, {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 80%",
@@ -38,7 +57,7 @@ const Contact = () => {
       delay: 0.2
     });
 
-    gsap.from(descriptionRef.current, {
+    const descTl = gsap.from(descriptionRef.current, {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 80%",
@@ -51,7 +70,7 @@ const Contact = () => {
     });
 
     // Cards animation
-    gsap.from(cardsRef.current.children, {
+    const cardsTl = gsap.from(cardsRef.current.children, {
       scrollTrigger: {
         trigger: cardsRef.current,
         start: "top 85%",
@@ -64,7 +83,34 @@ const Contact = () => {
       ease: "power2.out"
     });
 
-  }, []);
+    // Add hover effect to contact cards
+    const cards = cardsRef.current.children;
+    const hoverAnimations = [];
+
+    Array.from(cards).forEach(card => {
+      const enterAnimation = gsap.to(card, {
+        y: -10,
+        scale: 1.02,
+        duration: 0.3,
+        paused: true,
+        ease: "power2.out"
+      });
+
+      card.addEventListener("mouseenter", () => enterAnimation.play());
+      card.addEventListener("mouseleave", () => enterAnimation.reverse());
+      
+      hoverAnimations.push(enterAnimation);
+    });
+
+    // Store all animations for cleanup
+    animationRefs.current = [subtitleTl, headingTl, descTl, cardsTl, ...hoverAnimations];
+
+    // Cleanup function
+    return () => {
+      animationRefs.current.forEach(anim => anim?.kill());
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, [pathname]); // Re-run when pathname changes
 
   return (
     <section ref={sectionRef} id="contact" className="py-10 bg-gray-100 overflow-hidden">

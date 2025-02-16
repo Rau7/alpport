@@ -1,64 +1,100 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Link from "next/link";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Projects = () => {
+  const pathname = usePathname();
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
-  const projectRefs = useRef([]);
+  const projectsRef = useRef(null);
+  const animationRefs = useRef([]);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Heading animation
-    gsap.from(headingRef.current, {
-      scrollTrigger: {
-        trigger: headingRef.current,
-        start: "top 80%",
-      },
-      y: 50,
+    // Reset animation state when pathname changes
+    hasAnimated.current = false;
+    
+    // Kill any existing animations
+    animationRefs.current.forEach(anim => anim?.kill());
+    
+    // Reset elements to their initial state
+    const elements = [headingRef.current, ...(projectsRef.current?.children || [])];
+    gsap.set(elements, {
+      clearProps: "all",
       opacity: 0,
-      duration: 1
+      y: 50
     });
 
-    // Projects stagger animation
-    projectRefs.current.forEach((project, index) => {
-      gsap.from(project, {
-        scrollTrigger: {
-          trigger: project,
-          start: "top 85%",
-        },
-        y: 100,
+    const animate = () => {
+      if (hasAnimated.current) return;
+      
+      const tl = gsap.timeline();
+      
+      tl.from(headingRef.current, {
         opacity: 0,
+        y: 50,
         duration: 0.8,
-        delay: index * 0.2
+        ease: "power3.out"
+      })
+      .from(projectsRef.current.children, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out"
+      }, "-=0.4");
+
+      hasAnimated.current = true;
+      animationRefs.current.push(tl);
+    };
+
+    // Project hover animations
+    const hoverAnimations = [];
+    const cards = projectsRef.current.children;
+
+    Array.from(cards).forEach(card => {
+      const enterAnimation = gsap.to(card, {
+        y: -10,
+        scale: 1.02,
+        duration: 0.3,
+        paused: true,
+        ease: "power2.out"
       });
+
+      card.addEventListener("mouseenter", () => enterAnimation.play());
+      card.addEventListener("mouseleave", () => enterAnimation.reverse());
+      
+      hoverAnimations.push(enterAnimation);
     });
 
-    // Hover animations for project cards
-    projectRefs.current.forEach((project) => {
-      project.addEventListener("mouseenter", () => {
-        gsap.to(project, {
-          y: -10,
-          scale: 1.02,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      });
+    animationRefs.current = [...animationRefs.current, ...hoverAnimations];
 
-      project.addEventListener("mouseleave", () => {
-        gsap.to(project, {
-          y: 0,
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out"
+    // Create intersection observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animate();
+          }
         });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(sectionRef.current);
+
+    // Cleanup function
+    return () => {
+      observer.disconnect();
+      animationRefs.current.forEach(anim => anim?.kill());
+      gsap.set(elements, {
+        clearProps: "all"
       });
-    });
-  }, []);
+    };
+  }, [pathname]);
 
   return (
     <section id="projects" className="py-10 bg-gray-100 overflow-hidden" ref={sectionRef}>
@@ -74,11 +110,10 @@ const Projects = () => {
                 expertise
               </p>
             </div>
-            <div className="flex flex-wrap -m-4">
+            <div className="flex flex-wrap -m-4" ref={projectsRef}>
               {/* Project 1 */}
               <div 
                 className="w-full md:w-1/3 p-4"
-                ref={el => projectRefs.current[0] = el}
               >
                 <div className="h-full p-8 text-center hover:bg-gray-50 rounded-3xl transition duration-200">
                   <div className="mb-6 relative h-52 w-full">
@@ -117,7 +152,6 @@ const Projects = () => {
               {/* Project 2 */}
               <div 
                 className="w-full md:w-1/3 p-4"
-                ref={el => projectRefs.current[1] = el}
               >
                 <div className="h-full p-8 text-center hover:bg-gray-50 rounded-3xl transition duration-200">
                   <div className="mb-6 relative h-52 w-full">
@@ -156,7 +190,6 @@ const Projects = () => {
               {/* Project 3 */}
               <div 
                 className="w-full md:w-1/3 p-4"
-                ref={el => projectRefs.current[2] = el}
               >
                 <div className="h-full p-8 text-center hover:bg-gray-50 rounded-3xl transition duration-200">
                   <div className="mb-6 relative h-52 w-full">

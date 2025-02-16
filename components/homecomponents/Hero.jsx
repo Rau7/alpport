@@ -3,18 +3,46 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useAnimation } from "@/context/AnimationContext";
+import { usePathname } from "next/navigation";
 
 const Hero = () => {
+  const pathname = usePathname();
+  const { shouldAnimate } = useAnimation();
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const descriptionRef = useRef(null);
   const buttonsRef = useRef(null);
   const imageRef = useRef(null);
+  const animationRefs = useRef([]);
 
   useEffect(() => {
+    if (!shouldAnimate) return;
+
+    // Reset all animations
+    const elements = [
+      subtitleRef.current,
+      ...(titleRef.current?.children || []),
+      descriptionRef.current,
+      ...(buttonsRef.current?.children || []),
+      imageRef.current
+    ];
+
     gsap.registerPlugin(ScrollTrigger);
+
+    // Kill any existing animations
+    animationRefs.current.forEach(anim => anim?.kill());
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+    // Reset elements to their initial state
+    gsap.set(elements, {
+      clearProps: "all",
+      opacity: 0,
+      y: 0,
+      x: 0
+    });
     
-    // Initial animation timeline
+    // Create new animations
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     
     tl.from(subtitleRef.current, {
@@ -47,14 +75,23 @@ const Hero = () => {
     }, "-=1");
 
     // Subtle float animation for the image
-    gsap.to(imageRef.current, {
+    const floatAnimation = gsap.to(imageRef.current, {
       y: 20,
       duration: 2,
       repeat: -1,
       yoyo: true,
       ease: "power1.inOut"
     });
-  }, []);
+
+    // Store animations for cleanup
+    animationRefs.current = [tl, floatAnimation];
+
+    // Cleanup function
+    return () => {
+      animationRefs.current.forEach(anim => anim?.kill());
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, [pathname, shouldAnimate]); // Re-run when pathname or shouldAnimate changes
 
   return (
     <section className="pt-6 pb-10 bg-gray-100 overflow-hidden">

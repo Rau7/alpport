@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Alp Toker - Personal Portfolio
+
+Welcome to my personal portfolio website! This modern, responsive portfolio showcases my work as a Full Stack Developer and highlights my experience in creating elegant and efficient solutions.
+
+![Portfolio Preview](public/assets/images/headers/work.png)
+
+## Features
+
+- **Modern Design**: Clean and professional UI with smooth animations
+- **Responsive Layout**: Seamless experience across all devices
+- **Interactive Sections**: 
+  - Dynamic Hero section
+  - Project showcase with hover effects
+  - Blog section with latest articles
+  - Contact form for easy communication
+- **Smooth Animations**: GSAP-powered animations for enhanced user experience
+- **Mobile-First Approach**: Optimized for all screen sizes with a custom mobile menu
+
+## Technologies Used
+
+### Frontend
+- **Next.js 14**: React framework for production
+- **React**: UI component library
+- **Tailwind CSS**: Utility-first CSS framework for styling
+- **GSAP**: Professional-grade animation library
+- **Next/Image**: Optimized image loading and rendering
+- **Next/Font**: Custom font optimization
+
+### Development Tools
+- **ESLint**: Code linting
+- **Prettier**: Code formatting
+- **Git**: Version control
+- **npm**: Package management
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/alpport.git
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## Project Structure
+
+```
+alpport/
+├── app/                  # Next.js app directory
+├── components/          # React components
+│   ├── homecomponents/  # Homepage-specific components
+│   └── ...             # Other components
+├── public/             # Static assets
+│   ├── assets/         # Images, icons, etc.
+│   └── ...
+└── styles/            # Global styles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Responsive Design
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The portfolio is fully responsive and tested on:
+- Mobile devices (320px and up)
+- Tablets (768px and up)
+- Desktops (1024px and up)
+- Large screens (1440px and up)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Customization
 
-## Learn More
+You can customize various aspects of the portfolio:
+- Color schemes in `tailwind.config.js`
+- Component styles in their respective files
+- Content in the component files
+- Animations in the GSAP configuration
 
-To learn more about Next.js, take a look at the following resources:
+## Contact
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Feel free to reach out to me:
+- Email: tokeralp@gmail.com
+- [LinkedIn](#)
+- [GitHub](#)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with by Alp Toker
