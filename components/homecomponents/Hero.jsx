@@ -1,6 +1,61 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Hero = () => {
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const buttonsRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Initial animation timeline
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    
+    tl.from(subtitleRef.current, {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.2
+    })
+    .from(titleRef.current.children, {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2
+    }, "-=0.4")
+    .from(descriptionRef.current, {
+      y: 30,
+      opacity: 0,
+      duration: 0.8
+    }, "-=0.6")
+    .from(buttonsRef.current.children, {
+      y: 20,
+      opacity: 0,
+      duration: 0.4,
+      stagger: 0.2
+    }, "-=0.4")
+    .from(imageRef.current, {
+      x: 100,
+      opacity: 0,
+      duration: 1
+    }, "-=1");
+
+    // Subtle float animation for the image
+    gsap.to(imageRef.current, {
+      y: 20,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut"
+    });
+  }, []);
+
   return (
     <section className="pt-6 pb-10 bg-gray-100 overflow-hidden">
       <div className="container mx-auto px-4">
@@ -13,7 +68,7 @@ const Hero = () => {
                   <div className="flex items-center justify-between -m-2">
                     <div className="w-auto p-2">
                       <a className="inline-block" href="#">
-                        <img src="assets/logos/zanrly-logo.svg" alt />
+                        <img src="assets/logos/zanrly-logo.svg" alt="" />
                       </a>
                     </div>
                     <div className="w-auto p-2">
@@ -101,25 +156,37 @@ const Hero = () => {
           <div className="flex flex-wrap lg:items-center -m-8">
             <div className="w-full md:w-1/2 p-8">
               <div className="md:max-w-lg mx-auto">
-                <span className="inline-block mb-3 text-sm text-blue-500 font-bold uppercase tracking-widest">
+                <span 
+                  ref={subtitleRef}
+                  className="inline-block mb-3 text-sm text-blue-500 font-bold uppercase tracking-widest"
+                >
                   Full Stack Developer
                 </span>
-                <h1 className="font-heading mb-4 text-5xl text-gray-900 font-black tracking-tight">
+                <h1 
+                  ref={titleRef}
+                  className="font-heading mb-4 text-5xl text-gray-900 font-black tracking-tight"
+                >
                   <span>Alp </span>
                   <span className="text-transparent bg-clip-text bg-gradient-orange">
                     Toker
                   </span>
                 </h1>
-                <p className="mb-6 text-xl font-bold">
+                <p 
+                  ref={descriptionRef}
+                  className="mb-6 text-xl font-bold"
+                >
                   Dedicated Full-Stack Developer with 4+ years of experience in
                   frontend and backend development. Proven track record of
                   delivering high-quality solutions and driving project success.
                 </p>
-                <div className="flex flex-wrap -m-2">
+                <div 
+                  ref={buttonsRef}
+                  className="flex flex-wrap -m-2"
+                >
                   <div className="w-full md:w-auto p-2">
                     <a
                       className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full"
-                      href="#"
+                      href="#projects"
                     >
                       Projects
                     </a>
@@ -127,7 +194,7 @@ const Hero = () => {
                   <div className="w-full md:w-auto p-2">
                     <a
                       className="block w-full px-4 py-2.5 text-sm text-center text-gray-900 font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:ring-gray-200 rounded-full"
-                      href="#"
+                      href="#contact"
                     >
                       Get in touch
                     </a>
@@ -136,11 +203,14 @@ const Hero = () => {
               </div>
             </div>
             <div className="w-full md:w-1/2 p-8">
-              <div className="max-w-max mx-auto md:mr-0 bg-white overflow-hidden rounded-3xl">
+              <div 
+                ref={imageRef}
+                className="max-w-max mx-auto md:mr-0 bg-white overflow-hidden rounded-3xl"
+              >
                 <img
                   className="mx-auto"
                   src="assets/images/headers/work.png"
-                  alt
+                  alt=""
                 />
               </div>
             </div>

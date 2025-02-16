@@ -1,24 +1,98 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Contact = () => {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const cardsRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Heading animation
+    gsap.from(subtitleRef.current, {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      },
+      y: 20,
+      opacity: 0,
+      duration: 0.6
+    });
+
+    gsap.from(headingRef.current, {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.2
+    });
+
+    gsap.from(descriptionRef.current, {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      },
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+      delay: 0.4
+    });
+
+    // Cards animation
+    gsap.from(cardsRef.current.children, {
+      scrollTrigger: {
+        trigger: cardsRef.current,
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power2.out"
+    });
+
+  }, []);
+
   return (
-    <section id="contact" className="py-10 bg-gray-100 overflow-hidden">
+    <section ref={sectionRef} id="contact" className="py-10 bg-gray-100 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="py-16 px-8 bg-white overflow-hidden border border-gray-100 rounded-3xl">
           <div className="max-w-7xl mx-auto">
             <div className="mb-10 md:max-w-md mx-auto text-center">
-              <span className="inline-block mb-4 text-sm text-blue-500 font-bold uppercase tracking-widest">
+              <span 
+                ref={subtitleRef}
+                className="inline-block mb-4 text-sm text-blue-500 font-bold uppercase tracking-widest"
+              >
                 Contact Me
               </span>
-              <h2 className="font-heading mb-6 text-4xl md:text-5xl lg:text-6xl text-gray-900 font-black tracking-tight">
+              <h2 
+                ref={headingRef}
+                className="font-heading mb-6 text-4xl md:text-5xl lg:text-6xl text-gray-900 font-black tracking-tight"
+              >
                 Get in touch
               </h2>
-              <p className="text-gray-500 font-bold">
+              <p 
+                ref={descriptionRef}
+                className="text-gray-500 font-bold"
+              >
                 I’d love to hear from you! You can reach me by email or phone.
                 I’ll get back to you as soon as I can.
               </p>
             </div>
-            <div className="flex flex-wrap -m-4">
+            <div ref={cardsRef} className="flex flex-wrap -m-4">
               <div className="w-full md:w-1/3 p-4">
                 <div className="p-10 text-center h-full bg-gray-100 rounded-3xl">
                   <div className="flex items-center justify-center mb-6 w-12 h-12 mx-auto bg-white rounded-xl">

@@ -1,13 +1,71 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Projects = () => {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const projectRefs = useRef([]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Heading animation
+    gsap.from(headingRef.current, {
+      scrollTrigger: {
+        trigger: headingRef.current,
+        start: "top 80%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1
+    });
+
+    // Projects stagger animation
+    projectRefs.current.forEach((project, index) => {
+      gsap.from(project, {
+        scrollTrigger: {
+          trigger: project,
+          start: "top 85%",
+        },
+        y: 100,
+        opacity: 0,
+        duration: 0.8,
+        delay: index * 0.2
+      });
+    });
+
+    // Hover animations for project cards
+    projectRefs.current.forEach((project) => {
+      project.addEventListener("mouseenter", () => {
+        gsap.to(project, {
+          y: -10,
+          scale: 1.02,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      project.addEventListener("mouseleave", () => {
+        gsap.to(project, {
+          y: 0,
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+  }, []);
+
   return (
-    <section id="projects" className="py-10 bg-gray-100 overflow-hidden">
+    <section id="projects" className="py-10 bg-gray-100 overflow-hidden" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <div className="py-16 px-8 bg-white rounded-3xl">
           <div className="max-w-7xl mx-auto">
-            <div className="mb-10 md:max-w-2xl mx-auto text-center">
+            <div className="mb-10 md:max-w-2xl mx-auto text-center" ref={headingRef}>
               <h2 className="font-heading mb-6 text-4xl md:text-5xl lg:text-6xl text-gray-900 font-black tracking-tight">
                 Featured Projects
               </h2>
@@ -18,7 +76,10 @@ const Projects = () => {
             </div>
             <div className="flex flex-wrap -m-4">
               {/* Project 1 */}
-              <div className="w-full md:w-1/3 p-4">
+              <div 
+                className="w-full md:w-1/3 p-4"
+                ref={el => projectRefs.current[0] = el}
+              >
                 <div className="h-full p-8 text-center hover:bg-gray-50 rounded-3xl transition duration-200">
                   <div className="mb-6 relative h-52 w-full">
                     <div className="absolute top-0 left-0 w-full h-full rounded-3xl border border-gray-100 overflow-hidden">
@@ -54,7 +115,10 @@ const Projects = () => {
                 </div>
               </div>
               {/* Project 2 */}
-              <div className="w-full md:w-1/3 p-4">
+              <div 
+                className="w-full md:w-1/3 p-4"
+                ref={el => projectRefs.current[1] = el}
+              >
                 <div className="h-full p-8 text-center hover:bg-gray-50 rounded-3xl transition duration-200">
                   <div className="mb-6 relative h-52 w-full">
                     <div className="absolute top-0 left-0 w-full h-full rounded-3xl border border-gray-100 overflow-hidden">
@@ -90,7 +154,10 @@ const Projects = () => {
                 </div>
               </div>
               {/* Project 3 */}
-              <div className="w-full md:w-1/3 p-4">
+              <div 
+                className="w-full md:w-1/3 p-4"
+                ref={el => projectRefs.current[2] = el}
+              >
                 <div className="h-full p-8 text-center hover:bg-gray-50 rounded-3xl transition duration-200">
                   <div className="mb-6 relative h-52 w-full">
                     <div className="absolute top-0 left-0 w-full h-full rounded-3xl border border-gray-100 overflow-hidden">
