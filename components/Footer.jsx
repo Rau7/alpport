@@ -20,8 +20,8 @@ const Footer = () => {
               <div className="w-auto p-4">
                 <a className="inline-block" href="#">
                   <Image
-                    src="/assets/logos/zanrly-logo.svg"
-                    alt="Logo"
+                    src="/assets/logos/alp-toker-logo.svg"
+                    alt="Alp Toker Logo"
                     width={120}
                     height={40}
                   />

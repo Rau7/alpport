@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import logos from "@/public/assets/logos/zanrly-logo.svg";
+import logos from "@/public/assets/logos/alp-toker-logo.svg";
 import Image from "next/image";
 
 const Header = () => {
