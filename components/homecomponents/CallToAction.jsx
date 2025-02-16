@@ -2,7 +2,7 @@ import React from "react";
 
 const CallToAction = () => {
   return (
-    <section className="py-10 bg-gray-50 overflow-hidden">
+    <section className="py-10 bg-gray-100 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="py-16 px-8 md:px-16 bg-gradient-red rounded-3xl">
           <div className="flex flex-wrap items-center -m-4">

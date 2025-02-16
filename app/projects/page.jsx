@@ -11,7 +11,7 @@ const AllProjects = () => {
       description: "React.js, SCSS, HTML - NFT Gallery Showcase",
       image: "https://picsum.photos/800/600?random=1",
       detailLink: "/projects/xspectar-gallery",
-      sourceCode: "https://github.com/Rau7/xspectar-gallery"
+      sourceCode: "https://github.com/Rau7/xspectar-gallery",
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const AllProjects = () => {
       description: "React.js, CSS, HTML - Elegant Wedding Website",
       image: "https://picsum.photos/800/600?random=2",
       detailLink: "/projects/wedding-website",
-      sourceCode: "https://github.com/Rau7/wedding-website"
+      sourceCode: "https://github.com/Rau7/wedding-website",
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ const AllProjects = () => {
       description: "C#, Windows Forms - Interactive Game Development",
       image: "https://picsum.photos/800/600?random=3",
       detailLink: "/projects/batmobile-game",
-      sourceCode: "https://github.com/Rau7/TheBatmobileGame"
+      sourceCode: "https://github.com/Rau7/TheBatmobileGame",
     },
     {
       id: 4,
@@ -35,7 +35,7 @@ const AllProjects = () => {
       description: "Next.js, Tailwind CSS - Personal Portfolio",
       image: "https://picsum.photos/800/600?random=4",
       detailLink: "/projects/portfolio",
-      sourceCode: "https://github.com/Rau7/alpport"
+      sourceCode: "https://github.com/Rau7/alpport",
     },
     {
       id: 5,
@@ -43,7 +43,7 @@ const AllProjects = () => {
       description: "React.js, Node.js, MongoDB - Full Stack Application",
       image: "https://picsum.photos/800/600?random=5",
       detailLink: "/projects/task-manager",
-      sourceCode: "https://github.com/Rau7/task-manager"
+      sourceCode: "https://github.com/Rau7/task-manager",
     },
     {
       id: 6,
@@ -51,13 +51,13 @@ const AllProjects = () => {
       description: "JavaScript, OpenWeather API - Real-time Weather App",
       image: "https://picsum.photos/800/600?random=6",
       detailLink: "/projects/weather-dashboard",
-      sourceCode: "https://github.com/Rau7/weather-dashboard"
-    }
+      sourceCode: "https://github.com/Rau7/weather-dashboard",
+    },
   ];
 
   return (
     <div className="container mx-auto px-4">
-      <div className="py-16 px-8 bg-white rounded-3xl">
+      <div className="py-16 px-8 bg-gray-100 rounded-3xl">
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 md:max-w-2xl mx-auto text-center">
             <h2 className="font-heading mb-6 text-4xl md:text-5xl lg:text-6xl text-gray-900 font-black tracking-tight">

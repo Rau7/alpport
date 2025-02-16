@@ -19,7 +19,7 @@ export default function ProjectDetail({ params }) {
   return (
     <>
       <ProjectHeader />
-      <div className="min-h-screen bg-gray-50 pt-16">
+      <div className="min-h-screen bg-gray-100">
         {/* Hero Section */}
         <div className="w-full bg-gradient-to-r from-blue-600 to-blue-800">
           <div className="container mx-auto px-4 py-20 flex items-center justify-center">

@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <section className="py-6 bg-gray-50">
+    <section className="py-6 bg-gray-100">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between px-6 py-3.5 rounded-full bg-white ">
           <div className="w-auto">

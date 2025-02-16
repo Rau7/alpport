@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <section className="py-10 bg-gray-50 overflow-hidden">
+    <section className="py-10 bg-gray-100 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="p-10 bg-white rounded-3xl">
           <div className="flex flex-wrap items-center -m-8">
