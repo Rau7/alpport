@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const isProjectPage = pathname?.startsWith("/projects/");
+  const isProjectPage = pathname?.startsWith("/projects");
 
   return (
     <html lang="en">

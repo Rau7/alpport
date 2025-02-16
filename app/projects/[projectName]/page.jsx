@@ -86,7 +86,6 @@ export default function ProjectDetail({ params }) {
           </div>
         </div>
       </div>
-      <ProjectFooter />
     </>
   );
 }

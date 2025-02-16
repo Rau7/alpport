@@ -127,14 +127,12 @@ const Projects = () => {
               </div>
             </div>
             <div className="flex justify-center mt-12">
-              <a
-                href="https://github.com/Rau7?tab=repositories"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/projects"
                 className="inline-block px-8 py-4 text-sm text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full transition duration-200"
               >
                 View More Projects
-              </a>
+              </Link>
             </div>
           </div>
         </div>
